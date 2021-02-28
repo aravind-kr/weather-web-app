@@ -3,27 +3,18 @@ import firebase from './firebase';
 const firestore = firebase.firestore();
 const app = firebase.app();
 
-export function createWeatherHistory({ temperature, humidity, location }) {
-  const record = Object.assign(
-    {},
-    {
-      temperature,
-      humidity,
-      location,
-      created: new Date().toISOString()
-    }
-  );
-  console.log(record);
-  return firestore
-    .collection('weather')
-    .doc()
-    .set(
-      {
-        // uid: location, // convert it to a slug if location should be unique
-        ...record
-      },
-      { merge: true }
-    );
+export async function createWeatherHistory({
+  temperature,
+  humidity,
+  location
+}) {
+  return await firestore.collection('weather').add({
+    // uid: location, // convert it to a slug if location should be unique
+    temperature,
+    humidity,
+    location,
+    created: new Date().toISOString()
+  });
 }
 
 export async function deleteWeatherHistory(id) {
