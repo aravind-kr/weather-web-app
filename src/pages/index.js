@@ -30,13 +30,7 @@ const Index = () => {
   };
   console.log(weather && weather.data.cod, weather && weather.data.cod == 404);
   return (
-    <Container
-      minHeight="100vh"
-      width="100vw"
-      padding="12"
-      position="relative"
-      bg="gray.100"
-    >
+    <Container minHeight="100vh" padding="12" position="relative" bg="gray.100">
       <Box maxW="48rem" w="100%">
         <Header setIsCelcius={setIsCelcius} isCelcius={isCelcius} />
         <Box

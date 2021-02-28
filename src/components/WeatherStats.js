@@ -28,7 +28,7 @@ const WeatherStats = ({ weather, isCelcius }) => (
           {format(new Date(weather.data.dt * 1000), 'h:mm a')}
         </Text>
       </StatHelpText>
-      <Divider />
+      <Divider borderColor="gray.100" />
       <StatHelpText mt="2">{weather.data.weather[0].description}</StatHelpText>
       <StatLabel></StatLabel>
     </Stat>
