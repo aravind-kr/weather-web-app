@@ -5,10 +5,17 @@ import {
   Button,
   Box,
   InputRightElement,
+  Text,
   Input
 } from '@chakra-ui/react';
 
-const Header = ({ handleSearch, setSearchKey, isLoading, searchKey }) => {
+const Header = ({
+  isInvalid,
+  handleSearch,
+  setSearchKey,
+  isLoading,
+  searchKey
+}) => {
   return (
     <Box p="2" w="100%">
       <Heading fontSize="lg" mb="2">
@@ -17,6 +24,7 @@ const Header = ({ handleSearch, setSearchKey, isLoading, searchKey }) => {
       <InputGroup size="lg">
         <Input
           pr="4.5rem"
+          isInvalid={isInvalid}
           type="text"
           placeholder="Enter a place or a country"
           value={searchKey}
@@ -38,6 +46,11 @@ const Header = ({ handleSearch, setSearchKey, isLoading, searchKey }) => {
           </Button>
         </InputRightElement>
       </InputGroup>
+      {isInvalid ? (
+        <Text fontSize="sm" pl="1" color="red.500">
+          Please search for a valid city
+        </Text>
+      ) : null}
     </Box>
   );
 };

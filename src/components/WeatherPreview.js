@@ -1,6 +1,8 @@
 import React from 'react';
-import { Box, Text } from '@chakra-ui/react';
-import { getTemperatureWithMetric } from '../utils/metric';
+import { Box, Flex, Text } from '@chakra-ui/react';
+import styled from '@emotion/styled';
+
+import WeatherStats from './WeatherStats';
 
 const WeatherPreview = ({ weather, isCelcius }) => {
   return (
@@ -14,34 +16,40 @@ const WeatherPreview = ({ weather, isCelcius }) => {
         overflow="hidden"
         my="10"
         bg="white"
+        position="relative"
       >
-        {weather && weather.data.cod === 200 ? (
-          <Text
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            fontWeight="bold"
-            fontSize="lg"
-          >
-            {weather.data.name} <br />
-            {getTemperatureWithMetric(weather.data.main.temp, isCelcius)}
-          </Text>
-        ) : (
-          <Text
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            fontWeight="bold"
-            fontSize="lg"
-          >
-            {weather && weather.data.cod === '404'
-              ? 'Invalid location'
-              : "Search for a city's current weather"}
-          </Text>
-        )}
+        {/* <PreviewSheen /> */}
+        <Box zIndex="2" position="relative">
+          <WeatherStats weather={weather} isCelcius={isCelcius} />
+        </Box>
       </Box>
     </Box>
   );
 };
 
 export default WeatherPreview;
+
+const PreviewSheen = styled.div`
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  &:before {
+    background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 0, 0, 0.3)
+      ),
+      linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+    bottom: 0;
+    content: '';
+    display: block;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+`;

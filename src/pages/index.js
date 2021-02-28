@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Text } from '@chakra-ui/react';
 import { mutate } from 'swr';
 import { Container } from '../components/Container';
 import Header from '../components/Header';
@@ -28,12 +28,12 @@ const Index = () => {
   const toggleMetric = () => {
     setIsCelcius(!isCelcius);
   };
-
+  console.log(weather && weather.data.cod, weather && weather.data.cod == 404);
   return (
     <Container
       minHeight="100vh"
       width="100vw"
-      padding={['20px', '40px', '60px 50px 100px']}
+      padding="12"
       position="relative"
       bg="gray.100"
     >
@@ -51,8 +51,12 @@ const Index = () => {
             setSearchKey={setSearchKey}
             isLoading={isLoading}
             searchKey={searchKey}
+            isInvalid={weather && weather.data.cod == 404}
           />
-          <WeatherPreview weather={weather} isCelcius={isCelcius} />
+
+          {weather && weather.data.cod === 200 && (
+            <WeatherPreview weather={weather} isCelcius={isCelcius} />
+          )}
         </Box>
         <WeatherHistory isCelcius={isCelcius} />
       </Box>
