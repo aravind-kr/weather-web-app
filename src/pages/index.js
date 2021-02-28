@@ -1,17 +1,5 @@
 import React from 'react';
-import {
-  Heading,
-  Box,
-  Flex,
-  Text,
-  Input,
-  InputGroup,
-  InputRightElement,
-  Button,
-  Switch,
-  FormLabel,
-  Stack
-} from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { mutate } from 'swr';
 import { Container } from '../components/Container';
 import Header from '../components/Header';
@@ -50,7 +38,7 @@ const Index = () => {
       bg="gray.100"
     >
       <Box maxW="48rem" w="100%">
-        <Header />
+        <Header setIsCelcius={setIsCelcius} isCelcius={isCelcius} />
         <Box
           background="white"
           borderRadius="lg"
