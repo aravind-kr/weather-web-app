@@ -15,7 +15,7 @@ import { getTemperatureWithMetric } from '../utils/metric';
 
 const WeatherStats = ({ weather, isCelcius }) => (
   <StyledWeatherPreview className="stats">
-    <Stat maxW="130px" className="stats-main">
+    <Stat maxW="140px" className="stats-main">
       <img
         src={`https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather.data.weather[0].icon}.svg`}
       />
@@ -32,7 +32,12 @@ const WeatherStats = ({ weather, isCelcius }) => (
       <StatHelpText mt="2">{weather.data.weather[0].description}</StatHelpText>
       <StatLabel></StatLabel>
     </Stat>
-    <Flex flexGrow="1" direction="column" ml="8" justifyContent="space-between">
+    <Flex
+      flexGrow="1"
+      direction="column"
+      ml={[0, 8]}
+      justifyContent="space-between"
+    >
       <StatGroup className="stats-group">
         <Stat>
           <StatLabel>Location</StatLabel>
@@ -74,6 +79,22 @@ const WeatherStats = ({ weather, isCelcius }) => (
 export default WeatherStats;
 
 const StyledWeatherPreview = styled(Flex)`
+  color: #fff;
+  .stats-main {
+    padding: 16px;
+    background: #fffffff0;
+    border-radius: 5px;
+    color: #222;
+  }
+
+  .chakra-stat {
+    padding: 16px;
+    background: #fffffff0;
+    border-radius: 5px;
+    color: #222;
+    margin-right: 2rem;
+    min-height: 120px;
+  }
   @media screen and (max-width: 40em) {
     flex-direction: column;
     .stats-main img {
@@ -93,6 +114,7 @@ const StyledWeatherPreview = styled(Flex)`
       text-align: center;
       max-width: 100%;
       margin-bottom: 3rem;
+      margin-right: 0;
     }
   }
 `;

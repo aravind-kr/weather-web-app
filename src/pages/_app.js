@@ -25,6 +25,7 @@ function MyApp({ Component, pageProps }) {
 
           .chakra-table tbody tr {
             padding: 0.25em;
+            margin-top: 1rem;
           }
 
           .chakra-table td .td:before {

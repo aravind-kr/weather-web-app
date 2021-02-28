@@ -17,8 +17,10 @@ const WeatherPreview = ({ weather, isCelcius }) => {
         my="10"
         bg="white"
         position="relative"
+        backgroundImage={`url('/sunny.jpg')`}
+        backgroundSize="cover"
       >
-        {/* <PreviewSheen /> */}
+        <PreviewSheen />
         <Box zIndex="2" position="relative">
           <WeatherStats weather={weather} isCelcius={isCelcius} />
         </Box>
